@@ -8,7 +8,7 @@ function display(value) {
     }
     else {
         title.style.display = 'none'
-        document.querySelector('#calc').style.opacity='1'
+        document.querySelector('#calc').style.opacity = '1'
         if (count == 0)//Cheching rslt is obtained or not
         {
             document.querySelector('#calc').innerHTML = document.querySelector('#rslt').innerHTML;//Resetting the value of calc to rslt
@@ -59,20 +59,20 @@ function solution() {
         if (calc.includes("%")) {
             y = calc.slice(0, -1) / 100;
             document.querySelector('#rslt').innerHTML = y;
-            let val=document.querySelector('#rslt').innerHTML;
-            if (val.includes(".")) {
-                var c=calc.slice(0, -1).split(".")[1].length;
-                val=parseFloat(val).toFixed(c+2);
+            if (calc.includes(".")) {
+                let val = document.querySelector('#rslt').innerHTML;
+                var c = calc.slice(0, -1).split(".")[1].length;
+                val = parseFloat(val).toFixed(c + 2);
                 document.querySelector('#rslt').innerHTML = val;
             }
         }
         else {
             y = eval(calc);
             document.querySelector('#rslt').innerHTML = y;
-        decimal(document.querySelector('#rslt').innerHTML);
+            decimal(document.querySelector('#rslt').innerHTML);
         }
         document.querySelector('#calc').style.fontSize = "25px";
-        document.querySelector('#calc').style.opacity='0.6'
+        document.querySelector('#calc').style.opacity = '0.6'
         count = 0;
         re = 0;
     }
@@ -97,11 +97,11 @@ function cancle() {
     re++;
     if (document.querySelector('#calc').innerHTML.length >= 11) {
         document.querySelector('#calc').style.fontSize = "30px";
-        document.querySelector('#calc').style.opacity='1'
+        document.querySelector('#calc').style.opacity = '1'
     }
     else {
         document.querySelector('#calc').style.fontSize = "50px";
-        document.querySelector('#calc').style.opacity='1'
+        document.querySelector('#calc').style.opacity = '1'
     }
     if (document.querySelector('#calc').innerHTML.length == 0) {
         title.style.display = 'block';
@@ -127,15 +127,15 @@ function perc() {
 }
 
 function decimal(y) {
-        if (y.length >= 13)//Checking Value in calc is exceeding the div or not
-        {
-            if (y.includes(".")) {
-                y = parseFloat(y).toFixed(12);
-                document.querySelector('#rslt').innerHTML = y;
-            }
-            document.querySelector('#rslt').style.fontSize = "35px";
+    if (y.length >= 13)//Checking Value in calc is exceeding the div or not
+    {
+        if (y.includes(".")) {
+            y = parseFloat(y).toFixed(12);
+            document.querySelector('#rslt').innerHTML = y;
         }
-        else {
-            document.querySelector('#rslt').style.fontSize = "50px";
-        }
+        document.querySelector('#rslt').style.fontSize = "35px";
+    }
+    else {
+        document.querySelector('#rslt').style.fontSize = "50px";
+    }
 }
