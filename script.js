@@ -1,4 +1,4 @@
-var op = ['+', '-', '*', '/', '%']
+var op = ['+', '*', '/', '%']
 var count = 0;
 var re = 0;
 function display(value) {
