@@ -1,4 +1,4 @@
-var op = ['+', '*', '/', '%']
+var op = ['+', '*', '/', '%','-','^']
 var count = 0;
 var re = 0;
 function display(value) {
@@ -67,6 +67,9 @@ function solution() {
             }
         }
         else {
+            if (calc.includes("^")) {
+                calc=calc.replace('^','**')
+            }
             y = eval(calc);
             document.querySelector('#rslt').innerHTML = y;
             decimal(document.querySelector('#rslt').innerHTML);
