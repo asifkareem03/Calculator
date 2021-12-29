@@ -1,10 +1,10 @@
-var op = ['+', '*', '/', '%','-','^']
+var op = ['+', '*', '/', '%', '-', '^']
 var count = 0;
 var re = 0;
 function display(value) {
     if (op.includes(value) && document.querySelector('#calc').innerHTML.length == 0)//Preventing displaying opertors in empty calc
     {
-
+        // do nothing
     }
     else {
         title.style.display = 'none'
@@ -27,7 +27,7 @@ function display(value) {
             re++;
         }
         else {
-            if (document.querySelector('#calc').innerHTML === '0' && value != '.') {
+            if (document.querySelector('#calc').innerHTML === '0' && value != '.' && !op.includes(value)) {
                 document.querySelector('#calc').innerHTML = value;
             }
             else {
@@ -39,7 +39,7 @@ function display(value) {
                 }
                 else {
 
-                    document.querySelector('#calc').innerHTML += value;//'2'
+                    document.querySelector('#calc').innerHTML += value;
                     re += 1;
                 }
             }
@@ -57,7 +57,14 @@ function solution() {
     }
     else {
         if (calc.includes("%")) {
-            y = calc.slice(0, -1) / 100;
+
+            if(calc[calc.length-1]=='%'){
+                y = calc.slice(0, -1) / 100;
+            }
+            else{
+                const arr=calc.split('%')
+                y=(arr[0]*arr[1])/100
+            }
             document.querySelector('#rslt').innerHTML = y;
             if (calc.includes(".")) {
                 let val = document.querySelector('#rslt').innerHTML;
@@ -68,7 +75,7 @@ function solution() {
         }
         else {
             if (calc.includes("^")) {
-                calc=calc.replace('^','**')
+                calc = calc.replace('^', '**')
             }
             y = eval(calc);
             document.querySelector('#rslt').innerHTML = y;
@@ -111,23 +118,23 @@ function cancle() {
     }
 }
 
-function perc() {
-    let calc = document.querySelector('#calc').innerHTML;
-    if (calc.length == 0) {
-        document.querySelector('#calc').innerHTML = '' //Not displaying the calc if = is pressed without an operands
-    }
-    else {
-        x = document.querySelector('#calc').innerHTML
-        y = eval(x);
-        document.querySelector('#calc').innerHTML = y;
-        display('%');
-        // y=y/100;
-        // document.querySelector('#rslt').innerHTML = y;
-        // document.querySelector('#calc').style.fontSize = "25px";
-        // count = 0;
-        // re=0;
-    }
-}
+// function perc() {
+//     let calc = document.querySelector('#calc').innerHTML;
+//     if (calc.length == 0) {
+//         document.querySelector('#calc').innerHTML = '' //Not displaying the calc if = is pressed without an operands
+//     }
+//     else {
+//         x = document.querySelector('#calc').innerHTML
+//         y = eval(x);
+//         document.querySelector('#calc').innerHTML = y;
+//         display('%');
+//         // y=y/100;
+//         // document.querySelector('#rslt').innerHTML = y;
+//         // document.querySelector('#calc').style.fontSize = "25px";
+//         // count = 0;
+//         // re=0;
+//     }
+// }
 
 function decimal(y) {
     if (y.length >= 13)//Checking Value in calc is exceeding the div or not
